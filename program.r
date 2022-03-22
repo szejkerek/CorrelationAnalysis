@@ -1,4 +1,3 @@
-
 #WCZYTYWANIE DANYCH
 dane <- read.delim("dane.txt")
 wzrost <- dane[ , c("wzrost")]  
@@ -30,33 +29,32 @@ reglinp = function(X, name){
   
 }
 
- reglinp(chlopcy, "chlopcy")
- reglinp(dziewczyny, "dziewczyny")
- reglinp(dane, "chlopcy + dziewczyny")
- 
- 
+reglinp(chlopcy, "chlopcy")
+reglinp(dziewczyny, "dziewczyny")
+reglinp(dane, "chlopcy + dziewczyny")
+
+
 #Zadanie 3
 
 prediction <- function(dane){
- 
+  
   model <- modelReglinp(dane)
-  # 1. Add predictions 
+
   pred.int <- predict(model, interval = "prediction")
   mydata <- cbind(dane, pred.int)
-  # 2. Regression line + confidence intervals
+
   library("ggplot2")
   p <- ggplot(mydata, aes(dane$waga, dane$wzrost)) +
     geom_point() +
     stat_smooth(method = lm)
-  # 3. Add prediction intervals
+
   p + geom_line(aes(y = lwr), color = "red", linetype = "dashed")+
     geom_line(aes(y = upr), color = "red", linetype = "dashed")
-
+  
 }
 
 
 prediction(chlopcy)
 prediction(dziewczyny)
 prediction(dane)
-
 
