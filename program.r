@@ -3,7 +3,7 @@ library("MASS")
 library("ggplot2")
 
 # WCZYTYWANIE DANYCH
-data <- read.delim("data.txt")
+data <- read.delim("dane.txt")
 
 height_data <- data[ , c("wzrost")]  
 gender_data <- data[ , c("plec")]  
