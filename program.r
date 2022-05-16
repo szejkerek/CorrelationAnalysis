@@ -18,8 +18,8 @@ hist(height_data)
 hist(weight_data)
 
 # ZADANIE 2
-boys  <- subset(data, plec==1)
-girls <- subset(data, plec==0)
+chlopcy  <- subset(data, plec==1)
+dziewczyny <- subset(data, plec==0)
 
 model_reglinp <- function(X) {
   return( lm(X$wzrost ~ X$waga) )
@@ -40,14 +40,14 @@ girls_model    <- reglinp(dziewczyny, "dziewczyny")
 everyone_model <- reglinp(data,       "chlopcy + dziewczyny")
 
 # Zadanie 3
-slope_coefficients <- c(reg_chlopcy[["coefficients"]][["(Intercept)"]],
-                        reg_dziewczyny[["coefficients"]][["(Intercept)"]],
-                        reg_wszyscy[["coefficients"]][["(Intercept)"]])
+slope_coefficients <- c(boys_model[["coefficients"]][["(Intercept)"]],
+                        girls_model[["coefficients"]][["(Intercept)"]],
+                        everyone_model[["coefficients"]][["(Intercept)"]])
 slope_coefficients
 
-const_term_coefficients <-  c(reg_chlopcy[["coefficients"]][["X$waga"]],
-                              reg_dziewczyny[["coefficients"]][["X$waga"]],
-                              reg_wszyscy[["coefficients"]][["X$waga"]])
+const_term_coefficients <-  c(boys_model[["coefficients"]][["X$waga"]],
+                              girls_model[["coefficients"]][["X$waga"]],
+                              everyone_model[["coefficients"]][["X$waga"]])
 const_term_coefficients
 
 std_err <- function(x) sd(x) / sqrt(length(x))
