@@ -71,8 +71,8 @@ prediction <- function(data) {
 }
 
 
-prediction(boys)
-prediction(girls)
+prediction(chlopcy)
+prediction(dziewczyny)
 prediction(data)
 
 # Zadanie 5
