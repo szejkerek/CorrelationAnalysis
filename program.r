@@ -40,16 +40,16 @@ girls_model    <- reglinp(dziewczyny, "dziewczyny")
 everyone_model <- reglinp(data,       "chlopcy + dziewczyny")
 
 # Zadanie 3
-slope_coefficients <- c(boys_model[["coefficients"]][["(Intercept)"]],
+const_term_coefficients <- c(boys_model[["coefficients"]][["(Intercept)"]],
                         girls_model[["coefficients"]][["(Intercept)"]],
                         everyone_model[["coefficients"]][["(Intercept)"]])
-slope_coefficients
 
-const_term_coefficients <-  c(boys_model[["coefficients"]][["X$waga"]],
+ slope_coefficients <-  c(boys_model[["coefficients"]][["X$waga"]],
                               girls_model[["coefficients"]][["X$waga"]],
                               everyone_model[["coefficients"]][["X$waga"]])
-const_term_coefficients
 
+const_term_coefficients
+slope_coefficients
 std_err <- function(x) sd(x) / sqrt(length(x))
 
 std_err(slope_coefficients)
